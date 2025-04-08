@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SocialEngGuard: Sam’s Offer</title>
+  <link rel="icon" href="assets/favicon.png" />
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Changa:wght@300&family=Gluten&family=VT323&display=swap");
+    @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inconsolata&family=Roboto+Condensed:wght@700&display=swap");
+
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-size: 16px;
+      background-color: #0f1419;
+      overflow: hidden;
+    }
+
+    .hint-container {
+      width: 90%;
+      max-width: 600px;
+      padding: 20px;
+      background-color: rgba(26, 188, 156, 0.1);
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      border: 2px solid #1abc9c;
+      border-radius: 20px;
+    }
+
+    h1 {
+      font-family: "Gluten", cursive;
+      color: #1abc9c;
+      font-size: 24px;
+      margin-top: 10px;
+    }
+
+    p {
+      font-family: "Changa", sans-serif;
+      color: #f5f5f5;
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    .banner {
+      font-size: 24px;
+      font-weight: bold;
+      font-family: "Roboto Condensed", sans-serif;
+    }
+
+    .banner span {
+      border-bottom: 2px solid #1abc9c;
+      padding-bottom: 5px;
+    }
+
+    .btn-glitch-fill {
+      display: inline-block;
+      font-family: "VT323", monospace;
+      border: 1px solid #1abc9c;
+      border-radius: 10px;
+      color: #1abc9c;
+      padding: 10px 13px;
+      min-width: 175px;
+      line-height: 1.5em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .btn-glitch-fill .text, .btn-glitch-fill .decoration {
+      display: inline-block;
+    }
+
+    .btn-glitch-fill .decoration {
+      float: right;
+    }
+
+    .btn-glitch-fill:hover, .btn-glitch-fill:focus {
+      animation: glitch 0.2s;
+      background-color: #16a085;
+      color: #0f1419;
+      border: 1px solid #16a085;
+    }
+
+    .btn-glitch-fill:hover .text-decoration, .btn-glitch-fill:hover .decoration {
+      animation: blink 0.1s infinite;
+    }
+
+    .stats-bar {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      background-color: rgba(26, 188, 156, 0.8);
+      padding: 10px;
+      border-radius: 5px;
+      font-family: "Inconsolata", monospace;
+    }
+
+    .stats-bar span {
+      font-weight: bold;
+    }
+
+    @keyframes glitch {
+      25% { background-color: #e74c3c; transform: translateX(-10px); letter-spacing: 10px; }
+      35% { background-color: #27ae60; transform: translate(10px); }
+      59% { opacity: 0; }
+      60% { background-color: #3498db; transform: translate(-10px); filter: blur(5px); }
+      100% { background-color: #16a085; }
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    @media screen and (max-width: 768px) {
+      .hint-container {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="stats-bar">
+    Points: <span id="points">10</span> | Badges: <span id="badges">0</span> | Difficulty: <span id="difficulty">Beginner</span>
+  </div>
+  <div class="hint-container">
+    <img src="assets/sam_message_2.jpg" alt="hint" width="1280px" height="720px" rel="preload" loading="eager" decoding="async" fetchpriority="high" />
+    <h1>SAM :</h1>
+    <p class="banner"><span id="offer-text">Free Amazon Voucher Worth $20,000 🤑</span></p>
+    <a id="playButton" href="sam_message_3.html" class="btn-glitch-fill">
+      <span class="text">// Next</span><span class="text-decoration">_</span><span class="decoration">⇒</span>
+    </a>
+  </div>
+  <script>
+    let points = 10;
+    let badges = 0;
+    let difficulty = "Beginner";
+
+    function updateStats() {
+      document.getElementById("points").textContent = points;
+      document.getElementById("badges").textContent = badges;
+      document.getElementById("difficulty").textContent = difficulty;
+    }
+
+    const offers = [
+      "Free Amazon Voucher Worth $20,000 🤑",
+      "Score a $20K Amazon Voucher for Free! 😎",
+      "Claim Your $20,000 Amazon Reward Now 🎉"
+    ];
+
+    function generateOffer() {
+      const offer = offers[Math.floor(Math.random() * offers.length)];
+      document.getElementById("offer-text").textContent = offer;
+    }
+
+    generateOffer();
+    updateStats();
+  </script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SocialEngGuard: Threat Simulation</title>
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="stylesheet" href="css/video.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0f1419;
+      font-family: "Changa", sans-serif;
+      color: #f5f5f5;
+      overflow: hidden;
+    }
+    .player {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .video-container {
+      width: 100%;
+      max-width: 1280px;
+    }
+    .fullscreen-video {
+      position: relative;
+    }
+    .videoalign {
+      width: 100%;
+      border: 2px solid #1abc9c;
+      border-radius: 10px;
+    }
+    #player--controls {
+      margin-top: 10px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #1abc9c;
+      color: #0f1419;
+      text-decoration: none;
+      border-radius: 5px;
+      font-family: "VT323", monospace;
+      text-transform: uppercase;
+      transition: background-color 0.3s ease;
+    }
+    .btn:hover {
+      background-color: #16a085;
+    }
+    .stats-bar {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: rgba(26, 188, 156, 0.8);
+      padding: 10px;
+      border-radius: 5px;
+      color: #fff;
+    }
+    .stats-bar span {
+      font-weight: bold;
+    }
+    .scenario-overlay {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(15, 20, 25, 0.9);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      color: #f5f5f5;
+      max-width: 500px;
+      width: 90%;
+    }
+    .scenario-text {
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+    }
+    .scenario-btn {
+      background-color: #1abc9c;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: "VT323", monospace;
+      text-transform: uppercase;
+    }
+    .scenario-btn:hover {
+      background-color: #16a085;
+    }
+  </style>
+</head>
+<body>
+  <div id="loader"></div>
+  <section class="player" id="CH1_INTRO" name="subControl">
+    <div class="stats-bar">
+      Points: <span id="points">10</span> | Badges: <span id="badges">0</span> | Difficulty: <span id="difficulty">Beginner</span>
+    </div>
+    <section class="video-container" id="coins"></section>
+    <section id="pa-q">
+      <a id="again-button" href="#" onclick="location.reload(true); return false;" class="btn">Retry</a>
+      <a id="quit-button" href="../../" class="btn">Quit</a>
+    </section>
+    <section id="player--controls">
+      <a class="btn" id="player-btn--skip" href="sam_message.html">Skip Section</a>
+    </section>
+    <div class="fullscreen-video" id="video-outer">
+      <div id="napisy"></div>
+      <video class="videoalign" preload="auto" loading="lazy" controls id="player--video" autoplay="autoplay">
+        <source src="https://fuhadkalathingal.github.io/PhishGuard/level_1/assets/video.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div id="cntrl-wrapper">
+      <div class="control" id="controlsid">
+        <div class="progress">
+          <span class="bufferBar"></span>
+          <span class="timeBar"></span>
+        </div>
+        <div class="btmControl">
+          <div class="mainControl">
+            <a class="btnPlay lvl1 btnmain paused" href="#" tabindex="0" title="Play/Pause video"><span class="ico"></span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="loading"></div>
+    <div class="scenario-overlay" id="scenario-overlay">
+      <p class="scenario-text" id="scenario-text">Scenario: "You receive an email offering a free gift from a trusted company..."</p>
+      <button class="scenario-btn" onclick="proceedToMission()">Proceed to Mission</button>
+    </div>
+  </section>
+
+  <script src="js/system.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/video.js"></script>
+  <script>
+    const video = document.getElementById('player--video');
+    const overlay = document.getElementById('scenario-overlay');
+    let points = 10;
+    let badges = 0;
+    let difficulty = "Beginner";
+
+    function updateStats() {
+      document.getElementById("points").textContent = points;
+      document.getElementById("badges").textContent = badges;
+      document.getElementById("difficulty").textContent = difficulty;
+    }
+
+    const actions = ["receive an email", "get a call", "see a text"];
+    const tricks = ["offering a free gift", "claiming urgent verification", "requesting your credentials"];
+    const entities = ["from a trusted company", "from your boss", "from a friend"];
+
+    function generateScenario() {
+      const action = actions[Math.floor(Math.random() * actions.length)];
+      const trick = tricks[Math.floor(Math.random() * tricks.length)];
+      const entity = entities[Math.floor(Math.random() * entities.length)];
+      document.getElementById("scenario-text").textContent = `Scenario: "You ${action} ${trick} ${entity}..."`;
+    }
+
+    video.addEventListener('ended', function() {
+      points += 10;
+      if (points >= 30 && difficulty === "Beginner") {
+        difficulty = "Intermediate";
+        badges += 1;
+      }
+      updateStats();
+      overlay.style.display = "block";
+      generateScenario();
+    });
+
+    function proceedToMission() {
+      window.location.href = 'sam_message.html';
+    }
+
+    document.getElementById("player-btn--skip").addEventListener("click", function(e) {
+      e.preventDefault();
+      video.play();
+      setTimeout(() => window.location.href = 'sam_message.html', 500);
+    });
+  </script>
+</body>
+</html>

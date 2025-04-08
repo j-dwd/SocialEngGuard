@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SocialEngGuard: Phishing Trap</title>
+  <link rel="stylesheet" href="css/amazon.css">
+  <link rel="shortcut icon" href="assets/amazon_logo.png" type="image/x-icon">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0f1419;
+      font-family: "Changa", sans-serif;
+      color: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    #phishing-container {
+      text-align: center;
+      background-color: rgba(26, 188, 156, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 500px;
+      width: 90%;
+    }
+    #phishing-email img {
+      max-width: 100%;
+      border-radius: 5px;
+    }
+    #phishing-email h2 {
+      color: #1abc9c;
+      margin: 15px 0;
+    }
+    #phishing-email p {
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+    #phishing-email span {
+      color: #27ae60;
+      font-weight: bold;
+    }
+    .btn {
+      padding: 10px 20px;
+      background-color: #1abc9c;
+      color: #0f1419;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 10px;
+      font-family: "VT323", monospace;
+      text-transform: uppercase;
+      transition: background-color 0.3s ease;
+    }
+    .btn:hover {
+      background-color: #16a085;
+    }
+    .btn-danger {
+      background-color: #e74c3c;
+    }
+    .btn-danger:hover {
+      background-color: #c0392b;
+    }
+    .stats-bar {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      background-color: rgba(26, 188, 156, 0.8);
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .stats-bar span {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="stats-bar">
+    Points: <span id="points">10</span> | Badges: <span id="badges">0</span> | Difficulty: <span id="difficulty">Beginner</span>
+  </div>
+  <div id="phishing-container">
+    <div id="phishing-email">
+      <img src="assets/amazon_banner.png" alt="Amazon Banner">
+      <h2>Beware This Offer!</h2>
+      <p id="phishing-text">Dear User, we are pleased to inform you that you have won a free gift voucher worth <span>$20,000</span>.<br>Click below to claim your prize.</p>
+      <button onclick="claimPrize()" id="claim-button" class="btn">Claim Prize</button>
+      <button onclick="quitSafely()" id="claim-button-red" class="btn btn-danger">Quit</button>
+    </div>
+  </div>
+  <script>
+    let points = 10;
+    let badges = 0;
+    let difficulty = "Beginner";
+
+    function updateStats() {
+      document.getElementById("points").textContent = points;
+      document.getElementById("badges").textContent = badges;
+      document.getElementById("difficulty").textContent = difficulty;
+    }
+
+    const actions = ["won a free gift voucher", "been selected for a prize", "earned a special reward"];
+    const values = ["$20,000", "$10,000 cash", "a luxury item"];
+    const urgencies = ["Click below to claim", "Act now to redeem", "Hurry to secure"];
+
+    function generatePhishingText() {
+      const action = actions[Math.floor(Math.random() * actions.length)];
+      const value = values[Math.floor(Math.random() * values.length)];
+      const urgency = urgencies[Math.floor(Math.random() * urgencies.length)];
+      document.getElementById("phishing-text").innerHTML = `Dear User, we are pleased to inform you that you have ${action} worth <span>${value}</span>.<br>${urgency} your prize.`;
+    }
+
+    function claimPrize() {
+      points -= 5; // Penalty for falling for phishing
+      updateStats();
+      window.location.href = 'hint_2.html';
+    }
+
+    function quitSafely() {
+      points += 10; // Reward for avoiding phishing
+      if (points >= 30 && difficulty === "Beginner") {
+        difficulty = "Intermediate";
+        badges += 1;
+      }
+      updateStats();
+      window.location.href = 'question.html';
+    }
+
+    generatePhishingText();
+    updateStats();
+  </script>
+</body>
+</html>

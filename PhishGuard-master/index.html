@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="canonical" href="https://yourgithubusername.github.io/socialengguard/" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SocialEngGuard</title>
+
+  <!-- Meta SEO -->
+  <meta name="title" content="SocialEngGuard" />
+  <meta name="description" content="SocialEngGuard: Gamified training against social engineering with AI-driven scenarios." />
+  <meta name="robots" content="index, follow" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="language" content="English" />
+  <meta name="author" content="SocialEngGuard Team" />
+
+  <!-- Social media share -->
+  <meta property="og:title" content="SocialEngGuard" />
+  <meta property="og:site_name" content="SocialEngGuard" />
+  <meta property="og:url" content="https://yourgithubusername.github.io/socialengguard/" />
+  <meta property="og:description" content="Master social engineering defense with NLP-powered scenarios and earn rewards!" />
+  <meta property="og:type" content="Education" />
+  <meta property="og:image" content="images/phishguard_mainlogo.webp" />
+  <link rel="stylesheet" href="css/phishguard.css" type="text/css" media="screen" charset="utf-8" />
+</head>
+
+<body class="socialengguard launch subpage media">
+  <div id="page">
+    <div id="socialengguardcontain">
+      <a>
+        <img width="400px" height="400px" rel="preload" loading="eager" decoding="async" fetchpriority="high"
+          style="cursor: pointer" id="socialengguardimg" alt="SocialEngGuard logo" src="images/ShieldPic.png"
+          class="logo" />
+      </a>
+    </div>
+
+    <div id="maincontain">
+      <div class="section subpagenav">
+        <ul class="smalllinks dim">
+          <li class="link active">
+            <a href="award/badges.html">
+              <h4 class="banner">
+                <span>Awards</span>
+              </h4>
+            </a>
+          </li>
+          <li class="link">
+            <a id="startButton" href="https://yourgithubusername.github.io/SocialEngGuard/level_1/level_1.html">
+              <h4 class="banner">
+                <span>Start Training</span>
+              </h4>
+            </a>
+          </li>
+          <li class="link active">
+            <a href="">
+              <h4 id="shareBtn" class="banner">
+                <span>Share</span>
+              </h4>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="gridcontainer fullpage">
+        <div class="gridparent c2">
+          <div class="gridunit c2 videoparent">
+            <div class="reportcaptions hideonecolumn">
+              <span class="left">Social Engineering Threats - Reports</span>
+              <span class="right gridcaptionbold">SocialEngGuard</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="gridparent c1">
+          <div class="gridunit c1 screenshot">
+            <img width="1280px" height="720px" rel="preload" loading="eager" decoding="async" fetchpriority="high"
+              alt="SocialEngGuard screenshot" src="images/phishing_report_1.webp" />
+          </div>
+          <div class="gridunit c1 screenshot">
+            <img width="1280px" height="720px" rel="preload" loading="eager" decoding="async" fetchpriority="high"
+              alt="SocialEngGuard screenshot" src="images/Hackerdoing.png" />
+          </div>
+        </div>
+
+        <!-- Gamification: User Stats Section -->
+        <div class="gridparent c1">
+          <div class="gridunit c1 userstats" id="user-stats">
+            <div class="statscontain">
+              <p class="stats">Your Points: <span id="points">0</span></p>
+              <p class="stats">Badges Earned: <span id="badges">0</span></p>
+              <p class="stats">Difficulty: <span id="difficulty">Beginner</span></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- NLP-Driven Scenarios: Interactive Preview -->
+        <div class="gridparent c1">
+          <div class="gridunit c1 scenariopreview" id="scenario-preview">
+            <div class="previewcontain">
+              <p class="previewtext" id="scenario-text">Scenario: "You receive a call claiming urgent account verification..."</p>
+              <button class="scenario-btn" onclick="generateNewScenario()">New Challenge</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="gridparent c1">
+          <div class="gridunit c1 quote">
+            <div class="quotecontain">
+              <p class="quotation">
+                "Social engineering exploits up 60%,<br />
+                targeting human psychology"
+              </p>
+              <p class="citation gridcaptionbold">- Cybersecurity Today</p>
+            </div>
+          </div>
+          <div class="gridunit c1 quote">
+            <div class="quotecontain">
+              <p class="quotation">
+                "AI-crafted pretexting scams on the rise,<br />
+                awareness is critical."
+              </p>
+              <p class="citation gridcaptionbold">- TechRadar</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div id="main">
+        <div class="section support">
+          <ul class="supportlinks smalllinks dim">
+            <li class="link techsupport">
+              <a href="">
+                <h4 class="banner"><span>Tech Support</span></h4>
+              </a>
+            </li>
+            <li class="link projects">
+              <a href="">
+                <h4 class="banner"><span>More Projects</span></h4>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="section copyright">
+          <p>
+            ©<span id="year">2025</span> SocialEngGuard - Gamified Awareness Training.
+          </p>
+        </div>
+      </div>
+
+      <!-- Enhanced Script with NLP Placeholder -->
+      <script>
+        document
+          .querySelector("#shareBtn")
+          .addEventListener("click", (event) => {
+            if (navigator.share) {
+              navigator
+                .share({
+                  title: "SocialEngGuard",
+                  url: "https://yourgithubusername.github.io/SocialEngGuard/",
+                })
+                .then(() => {
+                  console.log("Thanks for sharing!");
+                })
+                .catch((err) => {
+                  console.log("Error while using Web share API:");
+                  console.log(err);
+                });
+            } else {
+              alert("Browser doesn't support this API!");
+            }
+          });
+
+        // Update user stats dynamically
+        function updateUserStats(points, badges, difficulty) {
+          document.getElementById("points").textContent = points || 0;
+          document.getElementById("badges").textContent = badges || 0;
+          document.getElementById("difficulty").textContent = difficulty || "Beginner";
+        }
+        updateUserStats(50, 2, "Intermediate");
+
+        // Simulated NLP scenario generation (to be replaced with back-end call)
+        const scenarios = [
+          "Scenario: 'An email offers a free gift if you click now...'",
+          "Scenario: 'A caller says they’re from IT and needs your password...'",
+          "Scenario: 'A text claims your bank account is locked, reply with your PIN...'"
+        ];
+        function generateNewScenario() {
+          const randomScenario = scenarios[Math.floor(Math.random() * scenarios.length)];
+          document.getElementById("scenario-text").textContent = randomScenario;
+          // Future: Fetch from back-end API
+          // fetch('/generate-scenario').then(response => response.json()).then(data => {
+          //   document.getElementById("scenario-text").textContent = data.scenario;
+          // });
+        }
+      </script>
+    </div>
+  </div>
+</body>
+</html>

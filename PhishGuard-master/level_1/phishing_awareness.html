@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>SocialEngGuard: Awareness Training</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.6.0/remixicon.min.css" rel="stylesheet" />
+  <link rel="icon" href="assets/favicon.png" />
+  <style>
+    body {
+      font-family: "Open Sans", sans-serif;
+      color: #f5f5f5;
+      background-color: #0f1419;
+      margin: 0;
+      padding: 0;
+    }
+    .center-div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 100vh;
+    }
+    .about .content {
+      margin: auto;
+      width: 80%;
+      max-width: 600px;
+      padding: 20px;
+      background-color: rgba(26, 188, 156, 0.1);
+      border-radius: 10px;
+    }
+    .about .content h2 {
+      font-weight: 700;
+      font-size: 34px;
+      line-height: 50px;
+      margin-bottom: 20px;
+      color: #1abc9c;
+    }
+    .about .content h3 {
+      font-weight: 500;
+      line-height: 32px;
+      font-size: 18px;
+    }
+    .about .content ul {
+      list-style: none;
+      padding: 0;
+    }
+    .about .content ul li {
+      padding: 10px 0 0 28px;
+      position: relative;
+    }
+    .about .content ul i {
+      left: 0;
+      top: 7px;
+      position: absolute;
+      font-size: 20px;
+      color: #1abc9c;
+    }
+    .stats-bar {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      background-color: rgba(26, 188, 156, 0.8);
+      padding: 10px;
+      border-radius: 5px;
+      color: #fff;
+    }
+    .stats-bar span {
+      font-weight: bold;
+    }
+    .btn {
+      width: 230px;
+      height: 60px;
+      border: 0;
+      background-color: #1abc9c;
+      cursor: pointer;
+      font-family: "Tomorrow", sans-serif;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      color: #0f1419;
+      clip-path: polygon(92% 0, 100% 25%, 100% 100%, 8% 100%, 0% 75%, 0 0);
+      position: relative;
+    }
+    .btn__content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      right: 2px;
+      bottom: 2px;
+      background-color: #16a085;
+      clip-path: polygon(92% 0, 100% 25%, 100% 100%, 8% 100%, 0% 75%, 0 0);
+    }
+    .btn:hover .btn__content {
+      background-color: #1abc9c;
+    }
+  </style>
+</head>
+<body>
+  <main id="main" class="center-div">
+    <div class="stats-bar">
+      Points: <span id="points">20</span> | Badges: <span id="badges">0</span> | Difficulty: <span id="difficulty">Beginner</span>
+    </div>
+    <section id="about" class="about">
+      <div class="content">
+        <h2>Mastering Social Engineering Defense</h2>
+        <h3>Social engineering exploits human trust to steal sensitive data.</h3>
+        <p>Key defenses against social engineering:</p>
+        <ul>
+          <li><i class="ri-shield-check-line"></i>Verify Sender Identity</li>
+          <li><i class="ri-link-unlink-m"></i>Inspect Links Carefully</li>
+          <li><i class="ri-lock-line"></i>Protect Personal Information</li>
+          <li><i class="ri-question-line"></i>Question Urgent Requests</li>
+          <li><i class="ri-key-2-line"></i>Use Complex Passwords</li>
+          <li><i class="ri-shield-keyhole-line"></i>Enable 2FA</li>
+          <li><i class="ri-refresh-line"></i>Update Systems Regularly</li>
+          <li><i class="ri-book-open-line"></i>Stay Informed</li>
+        </ul>
+        <p class="fst-italic">Digital hygiene tips:</p>
+        <ul>
+          <li><i class="ri-settings-3-line"></i>Tighten Privacy Settings</li>
+          <li><i class="ri-eye-off-line"></i>Limit Public Exposure</li>
+          <li><i class="ri-search-eye-line"></i>Monitor Accounts</li>
+          <li><i class="ri-wifi-off-line"></i>Secure Connections</li>
+        </ul>
+        <div class="button-container">
+          <button onclick="window.location.href='game/wackthehacker.html';" class="btn">
+            <span class="btn__content">Test Your Skills_</span>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script>
+    let points = 20;
+    let badges = 0;
+    let difficulty = "Beginner";
+    function updateStats() {
+      document.getElementById("points").textContent = points;
+      document.getElementById("badges").textContent = badges;
+      document.getElementById("difficulty").textContent = difficulty;
+    }
+    updateStats();
+  </script>
+</body>
+</html>

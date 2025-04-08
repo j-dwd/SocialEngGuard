@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SocialEngGuard: Mission Failed</title>
+  <link rel="icon" href="assets/favicon.png" />
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Condensed:wght@700&display=swap");
+    body {
+      background-color: #0f1419;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+      font-family: "Roboto Condensed", sans-serif;
+      color: #f5f5f5;
+    }
+    #home {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .error-main {
+      text-align: center;
+    }
+    .error_msg {
+      border-radius: 15px;
+      padding: 20px;
+      border: 5px solid #1abc9c;
+      background-color: rgba(26, 188, 156, 0.1);
+    }
+    .error_msg h1 {
+      color: #1abc9c;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 2.5rem;
+    }
+    .error_msg p {
+      color: #f5f5f5;
+      margin: 10px 0;
+    }
+    .error-btn {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    .btn1, .btn2 {
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      color: #0f1419;
+      background-color: #1abc9c;
+      border: 2px solid #16a085;
+    }
+    .btn1:hover, .btn2:hover {
+      background-color: #16a085;
+    }
+    .stats-bar {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      background-color: rgba(26, 188, 156, 0.8);
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .stats-bar span {
+      font-weight: bold;
+    }
+  </style>
+  <audio id="bgMusic" autoplay>
+    <source src="assets/mission_failed.mp3" type="audio/mpeg" />
+  </audio>
+</head>
+<body>
+  <div class="stats-bar">
+    Points: <span id="points">0</span> | Badges: <span id="badges">0</span> | Difficulty: <span id="difficulty">Beginner</span>
+  </div>
+  <div id="home">
+    <div class="error-main">
+      <div class="error_msg">
+        <h1>Mission Failed</h1>
+        <p>Oops!<br>Better luck next time.</p>
+      </div>
+      <div class="error-btn">
+        <a class="btn1" href="level_1.html">Home</a>
+        <a class="btn2" href="amazon.html">Retry</a>
+      </div>
+    </div>
+  </div>
+  <script>
+    let points = 0;
+    let badges = 0;
+    let difficulty = "Beginner";
+    function updateStats() {
+      document.getElementById("points").textContent = points;
+      document.getElementById("badges").textContent = badges;
+      document.getElementById("difficulty").textContent = difficulty;
+    }
+    updateStats();
+  </script>
+</body>
+</html>

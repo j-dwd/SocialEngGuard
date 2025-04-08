@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SocialEngGuard: Mission Complete</title>
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="stylesheet" href="css/question.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
+  <style>
+    body {
+      background-color: #0f1419;
+      color: #f5f5f5;
+      font-family: "Changa", sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      text-align: center;
+    }
+    #end {
+      background-color: rgba(26, 188, 156, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+    }
+    #finalScore {
+      font-size: 3rem;
+      color: #1abc9c;
+    }
+    .end-form-container {
+      margin: 20px 0;
+    }
+    #username {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #1abc9c;
+      background-color: #0f1419;
+      color: #f5f5f5;
+    }
+    .btn {
+      padding: 10px 20px;
+      background-color: #1abc9c;
+      color: #0f1419;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 10px;
+    }
+    .btn:hover {
+      background-color: #16a085;
+    }
+    .modal-box {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(15, 20, 25, 0.9);
+      padding: 20px;
+      border-radius: 10px;
+      display: none;
+    }
+    .modal-box img {
+      max-width: 100%;
+      border: 2px solid #1abc9c;
+      border-radius: 10px;
+    }
+    .modal-box h2 {
+      color: #1abc9c;
+      margin: 10px 0;
+    }
+    .stats-bar {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      background-color: rgba(26, 188, 156, 0.8);
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .stats-bar span {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="stats-bar">
+    Points: <span id="points">40</span> | Badges: <span id="badges">1</span> | Difficulty: <span id="difficulty">Intermediate</span>
+  </div>
+  <section>
+    <div class="container">
+      <div id="end" class="flex-center flex-column">
+        <h1 id="finalScore">0</h1>
+        <form class="end-form-container">
+          <h2 id="end-text">Enter your name to save your score!</h2>
+          <input type="text" name="name" id="username" placeholder="Enter your name">
+          <button class="btn show-modal" id="saveScoreBtn" type="submit" onclick="saveHighScore(event)" disabled>SAVE</button>
+        </form>
+        <a href="question.html" class="btn">Play Again</a>
+      </div>
+    </div>
+    <div class="modal-box" id="modal-box">
+      <img src="assets/level_1.png">
+      <h2>Mission Completed 🏆</h2>
+      <h3>You’ve thwarted the threat!<br>More challenges await.<br>Click "Next" to proceed.</h3>
+      <div class="buttons">
+        <button class="btn"><a href="phishing_awareness.html" style="text-decoration: none; color: #0f1419;">Next</a></button>
+      </div>
+    </div>
+  </section>
+  <script preload="lazy" src="js/end.js"></script>
+  <script>
+    let points = 40;
+    let badges = 1;
+    let difficulty = "Intermediate";
+    const finalScore = document.getElementById("finalScore");
+    const saveScoreBtn = document.getElementById("saveScoreBtn");
+    const username = document.getElementById("username");
+    const modalBox = document.getElementById("modal-box");
+
+    function updateStats() {
+      document.getElementById("points").textContent = points;
+      document.getElementById("badges").textContent = badges;
+      document.getElementById("difficulty").textContent = difficulty;
+    }
+
+    const mostRecentScore = localStorage.getItem("mostRecentScore");
+    finalScore.innerText = mostRecentScore;
+
+    username.addEventListener("keyup", () => {
+      saveScoreBtn.disabled = !username.value;
+    });
+
+    saveHighScore = (e) => {
+      e.preventDefault();
+      points += parseInt(mostRecentScore) / 100;
+      updateStats();
+      modalBox.style.display = "block";
+    };
+
+    updateStats();
+  </script>
+</body>
+</html>
